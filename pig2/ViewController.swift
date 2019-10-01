@@ -9,24 +9,48 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-   
-    @IBOutlet var RandomNumButton: UIButton!
     
-    @IBOutlet var RandomNumLabel: UILabel!
-     var randomInt = 0
+    var player1final: Int = 0
+    var player2final: Int = 0
+    var p1current: Int = 0
+    var p2current: Int = 0
+    var turn: Bool = true
     
+    @IBOutlet var wantEnd: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-      
+        
     }
- 
-    @IBAction func buttonPressed(sender: AnyObject) {
-        
-        randomInt = Int.random(in: 1..<7)
-        self.RandomNumLabel.text = "\(self.randomInt)"
-        
+    
+    func scoreTracker (randNum num: Int){
+        if(num  == 1){
+            if turn {
+                p1current = 0
+                turn.toggle()
+            } else {
+                p2current = 0
+                turn.toggle()
+            }
+        } else {
+            if turn {
+               p1current += num
+            } else {
+                p2current += num
+            }
+    }
+    }
+    
+    
+    @IBAction func playerWantsEnd(_ sender: Any) {
+        if turn {
+            player1final += p1current
+            p1current = 0
+        } else {
+            player2final += p2current
+            p2current = 0
+        }
+        turn.toggle()
     }
 }
 
