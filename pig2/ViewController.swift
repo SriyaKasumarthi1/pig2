@@ -10,6 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var RandomNumButton: UIButton!
+    
+    @IBOutlet var RandomNumLabel: UILabel!
+    var randomInt = 0
+    
+    
+  
+    
     var player1final: Int = 0
     var player2final: Int = 0
     var p1current: Int = 0
@@ -51,6 +59,12 @@ class ViewController: UIViewController {
             p2current = 0
         }
         turn.toggle()
+    }
+    @IBAction func buttonPressed(sender: AnyObject) {
+        
+        randomInt = Int.random(in: 1..<7)
+        self.RandomNumLabel.text = "\(self.randomInt)"
+        
     }
 }
 
