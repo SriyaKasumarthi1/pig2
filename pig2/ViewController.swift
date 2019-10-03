@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var randomInt = 0
     
     
-    
+  
     
     var player1final: Int = 0
     var player2final: Int = 0
@@ -42,28 +42,13 @@ class ViewController: UIViewController {
             }
         } else {
             if turn {
-                p1current += num
+               p1current += num
             } else {
                 p2current += num
             }
-        }
+    }
     }
     
-    func whoWins (){
-        if(p1current + player1final >= 100){
-            print("Player 1 wins!")
-            gameEnded()
-        } else if (p2current + player2final >= 100) {
-            print("Player 2 wins!")
-            gameEnded()
-        }
-    }
-    
-    func gameEnded() {
-        //make a lovely new storyboard if possible for a game ended slide
-        //else find a new way to end the game on current board
-        
-    }
     
     @IBAction func playerWantsEnd(_ sender: Any) {
         if turn {
@@ -79,9 +64,7 @@ class ViewController: UIViewController {
         
         randomInt = Int.random(in: 1..<7)
         self.RandomNumLabel.text = "\(self.randomInt)"
-        scoreTracker(randNum: randomInt)
-        whoWins()
+        
     }
-    
 }
 
